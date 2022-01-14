@@ -3,8 +3,14 @@ name: Example docker fail
 on: [push]
 
 jobs:
-  container:
+  container_fine:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker build .
+      - run: docker build -f ./fine.Dockerfile .
+
+  container_error:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: docker build -f ./error.Dockerfile .
